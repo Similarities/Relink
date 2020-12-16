@@ -1,0 +1,14 @@
+header{
+    height: 15%;
+    background-color: aliceblue;
+}
+.nav{
+    display: flex;
+}
+.buttons{
+    justify-content: flex-end;
+}
+footer{
+    height: 15%;
+    background-color: aliceblue;
+}
