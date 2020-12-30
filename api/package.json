@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "NODE_ENV=test sequelize-cli db:migrate",
+    "test": "NODE_PATH=. NODE_ENV=test mocha",
     "dev": "nodemon server.js"
   },
   "keywords": [],
@@ -12,10 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "faker": "^5.1.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
     "sequelize-cli": "^6.2.0"
   }
 }
