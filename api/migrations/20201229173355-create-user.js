@@ -3,47 +3,57 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Users', {
       id: {
+        type: Sequelize.UUID,
         primaryKey: true,
-        allowNull: false,
-        type: Sequelize.UUID
+        allowNull: false
       },
       name: {
-        allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
-        allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      password_digest: {
-        allowNull: false,
-        type: Sequelize.STRING
+      passwordDigest: {
+        field: 'password_digest',
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      short_description: {
+      shortDescription: {
+        field: 'short_description',
         type: Sequelize.STRING
       },
       contactable: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        defaultValue: false
       },
-      access_token: {
-        allowNull: false,
-        type: Sequelize.STRING
+      accessToken: {
+        field: 'access_token',
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      activation_token: {
-        allowNull: false,
-        type: Sequelize.STRING
+      activationToken: {
+        field: 'activation_token',
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      activated_at: {
+      activatedAt: {
+        field: 'activated_at',
         type: Sequelize.DATE
       },
       createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: Sequelize.NOW
       },
       updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: Sequelize.NOW
       }
     });
   },
