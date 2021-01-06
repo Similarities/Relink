@@ -1,7 +1,7 @@
-const { expect } = require("chai");
-const { v4: uuidv4 } = require("uuid");
-const db = require("../models/index");
-const { userFactory } = require("./factories/user");
+import { expect } from 'chai';
+import { v4 as uuidv4 } from 'uuid';
+import db from 'src/models/index';
+import userFactory from "test/factories/user";
 
 describe("User", () => {
   beforeEach(async () => {

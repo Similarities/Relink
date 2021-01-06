@@ -1,6 +1,6 @@
 const faker = require('faker');
-const db = require('../../models/index');
-const { v4: uuidv4 } = require('uuid');
+import db  from 'src/models/index';
+import { v4 as uuidv4 } from 'uuid';
 
 const userData = async (props = {}) => {
   const defaultProps = {
@@ -19,5 +19,5 @@ const userData = async (props = {}) => {
   return Object.assign({}, defaultProps, props);
 };
 
-module.exports.userFactory = async (props = {}) =>
+export default async (props = {}) =>
   db.User.create(await userData(props));
