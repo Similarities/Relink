@@ -4,21 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "babel-node": "babel-node --presets='@babel/preset-env'",
+    "build:dev": "docker build -t relink-dev-db . --target=dev",
+    "build:test": "docker build -t relink-test-db . --target=test",
+    "prepretest": "docker run -d -p 5442:5432 relink-test-db",
     "pretest": "NODE_ENV=test sequelize-cli db:migrate",
-    "test": "NODE_PATH=. NODE_ENV=test mocha",
-    "dev": "nodemon server.js"
+    "test": "NODE_PATH=. NODE_ENV=test mocha --require @babel/register",
+    "predev": "docker run -d -p 5441:5432 relink-dev-db",
+    "dev": "nodemon --exec npm run babel-node -- src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^3.8.1",
     "express": "^4.17.1",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
+    "regenerator-runtime": "^0.13.7",
     "sequelize": "^6.3.5",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
     "chai": "^4.2.0",
     "faker": "^5.1.0",
     "mocha": "^8.2.1",
