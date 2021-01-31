@@ -53,10 +53,21 @@ footer {
 
 .tradeM {
   align-self: flex-end;
-}›
+}
 
-.particle {
-  position: absolute;
-  border: 1px solid #ffffff;
-  background-color: #00000077;
+.user{
+    position: absolute;
+    border: 1px solid #ffffff;
+    background-color: #00000077;
+}
+
+body{
+    margin: 0%;
+    overflow: hidden;
+    
+}
+
+#canvas{
+    width:100%;
+    height:90%;
 }

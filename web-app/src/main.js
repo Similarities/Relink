@@ -1,12 +1,23 @@
+let canvas = document.querySelector('canvas');
+canvas.width = window.innerWidth;
+canvas.height = Math.round(window.innerHeight*0.9);
+let ctx = canvas.getContext("2d");
 
-const parent = document.getElementById("particles");
-const size = 30;
-const particles = Array.from({ length: size }, () => new Particle(parent, Math.random() * 500));
+const parent = document.getElementById("users");
+const userCount = 100;
+const users = Array.from({ length: userCount }, () => new User(parent,  50));
+const intersectionPoints = Array.from({ length: 10 }, () => new IntersectionPoint(canvas,ctx, 10));
+
 
 function update() {
-    particles.forEach(particle => {
-        particle.update();
+    users.forEach(user => {
+       user.update();
+    });
+    intersectionPoints.forEach(intersectionPoint => {
+        intersectionPoint.draw();
     });
 }
 
-setInterval(update, 10);
+
+update();
+//setInterval(update, 10);-

@@ -1,4 +1,4 @@
-class Particle {
+class User {
   constructor(parent, size) {
     this.parent = parent;
     this.size = size;
@@ -15,7 +15,7 @@ class Particle {
 
   div() {
     const element = document.createElement("div");
-    element.className = "particle";
+    element.className = "user";
     element.style.position = "absolute";
     element.style.width = `${this.size}px`;
     element.style.height = `${this.size}px`;
