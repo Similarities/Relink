@@ -1,20 +1,45 @@
-let canvas = document.querySelector('canvas');
+const header = document.querySelector('header');
+const footer = document.querySelector("footer");
+const headerHeight = header.offsetHeight;
+const canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
-canvas.height = Math.round(window.innerHeight*0.9);
-let ctx = canvas.getContext("2d");
+canvas.height = Math.round(window.innerHeight - headerHeight- footer.offsetHeight);
+const ctx = canvas.getContext("2d");
 
 const parent = document.getElementById("users");
-const userCount = 100;
-const users = Array.from({ length: userCount }, () => new User(parent,canvas,  50));
-const intersectionPoints = Array.from({ length: 10 }, () => new IntersectionPoint(canvas,ctx, 10));
+const userCount = 70;
+const size = 50;
+const intersectionCount = userCount/4;
+const users = Array.from({ length: userCount }, () => new User(parent, canvas, size, headerHeight));
+const intersectionPoints = Array.from({ length: intersectionCount}, () => new IntersectionPoint(canvas,ctx, 10));
 
+function drawLine(intersectionPoint, user){
+    ctx.beginPath();
+    ctx.moveTo(user.position.x + size/2, user.position.y - headerHeight + size/2);
+    ctx.lineTo(intersectionPoint.position.x, intersectionPoint.position.y);
+    ctx.strokeStyle = 'gray';
+    ctx.stroke();
+}
 
 function update() {
-    users.forEach(user => {
-       user.update();
-    });
     intersectionPoints.forEach(intersectionPoint => {
         intersectionPoint.draw();
+    });
+    users.forEach(user => {
+       let minDistance = 10000;
+       let closestPoint ;
+        intersectionPoints.forEach (intersectionPoint => {
+            const distance = intersectionPoint.position.distance(user.position);
+            if(distance<minDistance){
+                minDistance = distance;
+                closestPoint = intersectionPoint;
+            }   
+        })
+        drawLine(closestPoint, user);
+        index = Math.floor(Math.random() * intersectionPoints.length);
+        const second = intersectionPoints[index];
+        drawLine(second, user);
+
     });
 }
 

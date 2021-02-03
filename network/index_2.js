@@ -17,13 +17,12 @@ let user_coordinate_y = [];
 
 function intersectionPointList(number){
     for (i=0; i<=number; i++){
-
+        
         var_x = Math.round(Math.random()*canvas.width*0.86);
         var_y = Math.round(Math.random()*canvas.height*0.86);
 
         data_x.push(var_x)
         data_y.push(var_y)
-    
     }
 
 }
@@ -82,13 +81,15 @@ function drawConnection(data_x, data_y, user_x, user_y){
 
         for (i=0; i<= user_x.length; i++)
         {
-
+            // coordinates intersection p. and user 
             partner_1 =Math.round( Math.random()*data_x.length);
             partner_2 = Math.round( Math.random()*data_x.length);
             ctx.beginPath();
-            ctx.moveTo(user_x[i], user_y[i]);
+            ctx.moveTo(user_x[i], user_y[i]); 
             ctx.lineTo(data_x[partner_1], data_y[partner_1]);
-            ctx.arc(data_x[partner_1], data_y[partner_1],5, 0, Math.PI*2);
+            //ctx.arc(data_x[partner_1], data_y[partner_1],5, 0, Math.PI*2);
+            ctx.stroke();
+            ctx.beginPath();
             ctx.moveTo(user_x[i], user_y[i]);
             ctx.arc(data_x[partner_2], data_y[partner_2],5, 0, Math.PI*2);
             ctx.arc(var_x, var_y,5, 0, Math.PI*2, true);
