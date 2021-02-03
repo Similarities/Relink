@@ -5,7 +5,7 @@ let ctx = canvas.getContext("2d");
 
 const parent = document.getElementById("users");
 const userCount = 100;
-const users = Array.from({ length: userCount }, () => new User(parent,  50));
+const users = Array.from({ length: userCount }, () => new User(parent,canvas,  50));
 const intersectionPoints = Array.from({ length: 10 }, () => new IntersectionPoint(canvas,ctx, 10));
 
 

@@ -1,6 +1,7 @@
 class User {
-  constructor(parent, size) {
+  constructor(parent, canvas, size) {
     this.parent = parent;
+    this.canvas = canvas;
     this.size = size;
     this.position = this.startPosition();
     this.velocity = new Position(10, 10);
@@ -8,8 +9,8 @@ class User {
   }
 
   startPosition() {
-    const x = Math.round(Math.random() * window.innerWidth);
-    const y = Math.round(Math.random() * window.innerHeight);
+    const x = Math.round(Math.random() * this.canvas.width);
+    const y = Math.round(Math.random() * this.canvas.height);
     return new Position(x, y);
   }
 
