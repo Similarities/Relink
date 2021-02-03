@@ -2,21 +2,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ReLink</title>
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />    
+  <title>ReLink</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <header>
+      <div class="logo"></div>
       <div class="buttons">
-        <button type="button">Sign up</button>
-        <button type="button">Sign in</button>
+        <button type="button" class="button1">Create Profile</button>
+        <button type="button" class="button2">Edit Profile</button>
       </div>
     </header>
-    <main>
+    <main class="Main">
+      <button type="button" class="button3">
+        <a href="network.html"></a>Network view
+      </button>
         <canvas id="canvas" ></canvas>
       <div id="users"></div>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="tradeM">2020 Relink Team</div>
+      <div>Impressum</div>
+      <div>Manifest</div>
+      <div>Terms & Conditions</div>
+      <div>Contact</div>
+    </footer>
     <script src="src/position.js"></script>
     <script src="src/user.js"></script>
     <script src="src/intersectionPoint.js"></script>
