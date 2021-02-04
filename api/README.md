@@ -1,35 +1,26 @@
-# Migrations
-See how to do migration on [this page](https://sequelize.org/master/manual/migrations.html)
+# Prerequisites
+
+* docker
+* node and npm
 
 
-# Set up development database
+# Quick Setup
 
-You need to be in the folder 'api' to run the following commands.
+1) build docker container of development database:
 
-Build docker image:
+    `npm run dev:build`
 
-    docker build -t relink-dev-db . --target=dev
+2) run docker container of development database:
 
-Run docker container:
+    `npm run dev:run`
 
-    docker run -d -p 5441:5432 relink-dev-db
+3) start the development server:
 
-
-# Set up test database
-
-You need to be in the folder 'api' to run the following commands.
-
-Build docker image:
-
-    docker build -t relink-test-db . --target=test
-
-Run docker container:
-
-    docker run -d -p 5442:5432 relink-test-db
+    `npm run dev`
 
 
-# Set up database without docker
+# Migrations & Seeds
+See how to work with migrations and seeds on [this page][MIGRATIONS]
 
-1) install PostgreSQL
-2) create the appropriate user for the environment
-3) create the database with `npx sequelize-cli create:db`
+
+[MIGRATIONS]: https://sequelize.org/master/manual/migrations.html

@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "babel-node": "babel-node --presets='@babel/preset-env'",
-    "build:dev": "docker build -t relink-dev-db . --target=dev",
-    "build:test": "docker build -t relink-test-db . --target=test",
-    "prepretest": "docker run -d -p 5442:5432 relink-test-db",
+    "test:build": "docker build -t relink-test-db . --target=test",
+    "test:run": "docker run -d -p 5442:5432 relink-test-db",
     "pretest": "NODE_ENV=test sequelize-cli db:migrate",
     "test": "NODE_PATH=. NODE_ENV=test mocha --require @babel/register",
-    "predev": "docker run -d -p 5441:5432 relink-dev-db",
+    "dev:build": "docker build -t relink-dev-db . --target=dev",
+    "dev:run": "docker run -d -p 5441:5432 relink-dev-db",
+    "dev:seed": "npx sequelize-cli db:seed:all",
     "dev": "nodemon --exec npm run babel-node -- src/server.js"
   },
   "keywords": [],
