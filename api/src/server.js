@@ -12,8 +12,17 @@ app.get('/', (_, res) => {
 });
 
 app.get('/users', async (_, res) => {
-    const users = await db.User.findAll();
+    const users = await db.User.findAll({
+        attributes: ['id', 'name', 'email', 'shortDescription', 'contactable']
+    });
     res.json({ 'users': users });
+})
+
+app.get('/users/:id', async (req, res) => {
+    const user = await db.User.findByPk(req.params.id, {
+        attributes: ['id', 'name', 'email', 'shortDescription', 'contactable']
+    });
+    res.json({ 'user': user });
 })
 
 db.sequelize
