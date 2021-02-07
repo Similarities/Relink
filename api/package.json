@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel-node": "babel-node --presets='@babel/preset-env'",
     "test:build": "docker build -t relink-test-db . --target=test",
     "test:run": "docker run -d -p 5442:5432 relink-test-db",
     "pretest": "NODE_ENV=test sequelize-cli db:migrate",
     "test": "NODE_PATH=. NODE_ENV=test mocha --require @babel/register",
-    "dev:build": "docker build -t relink-dev-db . --target=dev",
-    "dev:run": "docker run -d -p 5441:5432 relink-dev-db",
-    "dev:seed": "npx sequelize-cli db:seed:all",
-    "dev": "nodemon --exec npm run babel-node -- src/server.js"
+    "dev:db:build": "docker build -t relink-dev-db . --target=dev",
+    "dev:db:run": "docker run --name relink-dev-db -d -p 5441:5432 relink-dev-db",
+    "dev:db:migrate": "npx sequelize-cli db:migrate",
+    "dev:db:seed": "npx sequelize-cli db:seed:all",
+    "dev:db:stop": "docker stop relink-dev-db && docker rm relink-dev-db",
+    "dev:db:create": "npm-run-all dev:db:build dev:db:run dev:db:migrate dev:db:seed",
+    "dev:db:reset": "npm-run-all dev:db:stop dev:db:create",
+    "dev": "nodemon --exec babel-node ./src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -27,14 +30,16 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
     "@babel/register": "^7.12.10",
     "chai": "^4.2.0",
     "faker": "^5.1.0",
     "mocha": "^8.2.1",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
     "sequelize-cli": "^6.2.0"
   }
 }
