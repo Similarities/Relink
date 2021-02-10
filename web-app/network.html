@@ -3,10 +3,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto"
-      rel="stylesheet"
-    />
-    <title>ReLink</title>
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />    
+  <title>ReLink</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -16,17 +16,19 @@
     />
   </head>
   <body>
-    <header>
+   <header id="header">
       <div class="logo"></div>
       <div class="buttons">
         <button type="button" class="button1">Create Profile</button>
         <button type="button" class="button2">Edit Profile</button>
+        <button type="button" class="button3">
+          <a href="network.html"></a>Network view
+        </button>
       </div>
     </header>
     <main class="Main">
-      <button type="button" class="button3">
-        <a href="network.html"></a>Network view
-      </button>
+        <canvas id="canvas" ></canvas>
+      <div id="users"></div>
     </main>
     <footer>
       <div class="tradeM">2020 Relink Team</div>
@@ -35,5 +37,9 @@
       <div>Terms & Conditions</div>
       <div>Contact</div>
     </footer>
+    <script src="src/position.js"></script>
+    <script src="src/user.js"></script>
+    <script src="src/intersectionPoint.js"></script>
+     <script src="src/main.js"></script>
   </body>
 </html>

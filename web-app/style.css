@@ -35,10 +35,6 @@ button {
 }
 
 .button3 {
-  margin: 5%;
-}
-.Main {
-  height: 78vh;
 }
 
 footer {
@@ -53,10 +49,18 @@ footer {
 
 .tradeM {
   align-self: flex-end;
-}›
+}
 
-.particle {
-  position: absolute;
-  border: 1px solid #ffffff;
-  background-color: #00000077;
+.user{
+    position: absolute;
+    border: 1px solid #ffffff;
+    background-color: #00000077;
+}
+
+body{
+    margin: 0%;
+    overflow: hidden;
+}
+#canvas{
+    border: black 3px solid;
 }

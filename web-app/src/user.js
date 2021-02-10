@@ -1,21 +1,23 @@
-class Particle {
-  constructor(parent, size) {
+class User {
+  constructor(parent, canvas, size, headerHeight) {
     this.parent = parent;
+    this.canvas = canvas;
     this.size = size;
+    this.headerHeight = headerHeight;
     this.position = this.startPosition();
     this.velocity = new Position(10, 10);
     this.element = this.div();
   }
 
   startPosition() {
-    const x = Math.round(Math.random() * window.innerWidth);
-    const y = Math.round(Math.random() * window.innerHeight);
+    const x = Math.round(Math.random() * this.canvas.width);
+    const y = Math.round(Math.random() * (this.canvas.height - this.size - 2)) + this.headerHeight;
     return new Position(x, y);
   }
 
   div() {
     const element = document.createElement("div");
-    element.className = "particle";
+    element.className = "user";
     element.style.position = "absolute";
     element.style.width = `${this.size}px`;
     element.style.height = `${this.size}px`;

@@ -9,4 +9,8 @@ class Position {
         this.y += other.y;
         return this;
     }
+
+    distance(other){
+        return Math.sqrt(Math.pow(this.x- other.x, 2) + Math.pow(this.y- other.y, 2));
+    }
 }
