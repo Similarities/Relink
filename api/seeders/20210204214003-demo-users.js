@@ -4,7 +4,7 @@ const faker = require('faker');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users',
-    Array.from({ length: 10 }, () => {
+    Array.from({ length: 50 }, () => {
         const user = {};
         user['id'] = faker.random.uuid();
         user['name'] = faker.internet.userName();

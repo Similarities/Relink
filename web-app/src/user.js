@@ -1,5 +1,6 @@
 class User {
-  constructor(parent, canvas, size, headerHeight) {
+  constructor(meta, parent, canvas, size, headerHeight) {
+    this.meta = meta;
     this.parent = parent;
     this.canvas = canvas;
     this.size = size;
@@ -16,6 +17,14 @@ class User {
   }
 
   div() {
+    const name = document.createElement("h3");
+    name.className = "name";
+    name.innerHTML = this.meta.name;
+
+    const shortDescription = document.createElement("p");
+    shortDescription.className = "shortDescription";
+    shortDescription.innerHTML = this.meta.shortDescription;
+
     const element = document.createElement("div");
     element.className = "user";
     element.style.position = "absolute";
@@ -23,6 +32,9 @@ class User {
     element.style.height = `${this.size}px`;
     element.style.left = `${this.position.x}px`;
     element.style.top = `${this.position.y}px`;
+
+    element.appendChild(name);
+    element.appendChild(shortDescription);
     this.parent.appendChild(element);
     return element;
   }
