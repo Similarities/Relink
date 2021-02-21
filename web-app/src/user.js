@@ -1,18 +1,20 @@
 class User {
-  constructor(parent, canvas, size, headerHeight) {
+  constructor(parent, size, position) {
     this.parent = parent;
     this.canvas = canvas;
     this.size = size;
-    this.headerHeight = headerHeight;
-    this.position = this.startPosition();
+    this.position = position;
+    this.area = new Rectrangle(this.position, this.size);
     this.velocity = new Position(10, 10);
     this.element = this.div();
   }
 
-  startPosition() {
-    const x = Math.round(Math.random() * this.canvas.width);
-    const y = Math.round(Math.random() * (this.canvas.height - this.size - 2)) + this.headerHeight;
-    return new Position(x, y);
+  collide(other){
+    return this.area.collide(other.area);
+  }
+
+  setPosition(position){
+    this.position = position;
   }
 
   div() {
@@ -28,7 +30,6 @@ class User {
   }
 
   update() {
-    this.position = this.position.add(this.velocity);
     this.element.style.left = `${this.position.x}px`;
     this.element.style.top = `${this.position.y}px`;
   }

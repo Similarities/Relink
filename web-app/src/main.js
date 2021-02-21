@@ -6,12 +6,31 @@ canvas.width = window.innerWidth;
 canvas.height = Math.round(window.innerHeight - headerHeight- footer.offsetHeight);
 const ctx = canvas.getContext("2d");
 
+
+function randomPosition() {
+    const x = Math.round(Math.random() * canvas.width);
+    const y = Math.round(Math.random() * (canvas.height - size - 2)) + headerHeight;
+    return new Position(x, y);
+}
+
 const parent = document.getElementById("users");
-const userCount = 70;
+const userCount = 50;
 const size = 50;
 const intersectionCount = userCount/4;
-const users = Array.from({ length: userCount }, () => new User(parent, canvas, size, headerHeight));
+const users = Array.from({ length: userCount }, () => new User(parent, size, randomPosition()));
 const intersectionPoints = Array.from({ length: intersectionCount}, () => new IntersectionPoint(canvas,ctx, 10));
+
+function overlapCorrection(){
+    users.forEach (user =>{
+        users.forEach( other => {
+            if(user !== other){
+                if(user.collide(other)){
+                    user.setPosition(randomPosition());
+                };              
+            }
+        })
+    })
+}
 
 function drawLine(intersectionPoint, user){
     ctx.beginPath();
@@ -21,7 +40,12 @@ function drawLine(intersectionPoint, user){
     ctx.stroke();
 }
 
+
+
 function update() {
+    overlapCorrection();
+    overlapCorrection();
+    overlapCorrection();
     intersectionPoints.forEach(intersectionPoint => {
         intersectionPoint.draw();
     });
@@ -39,7 +63,7 @@ function update() {
         index = Math.floor(Math.random() * intersectionPoints.length);
         const second = intersectionPoints[index];
         drawLine(second, user);
-
+        user.update();
     });
 }
 
