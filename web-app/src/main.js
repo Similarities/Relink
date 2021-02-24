@@ -5,13 +5,10 @@ const canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = Math.round(window.innerHeight - headerHeight- footer.offsetHeight);
 const ctx = canvas.getContext("2d");
-
 const parent = document.getElementById("users");
-const userCount = 70;
-const size = 50;
-const intersectionCount = userCount/4;
-const users = Array.from({ length: userCount }, () => new User(parent, canvas, size, headerHeight));
-const intersectionPoints = Array.from({ length: intersectionCount}, () => new IntersectionPoint(canvas,ctx, 10));
+const size = 100;
+const users = new Array();
+let intersectionPoints = new Array();
 
 function drawLine(intersectionPoint, user){
     ctx.beginPath();
@@ -33,7 +30,7 @@ function update() {
             if(distance<minDistance){
                 minDistance = distance;
                 closestPoint = intersectionPoint;
-            }   
+            }
         })
         drawLine(closestPoint, user);
         index = Math.floor(Math.random() * intersectionPoints.length);
@@ -43,6 +40,17 @@ function update() {
     });
 }
 
+const generateUsers = (usersMeta) => {
+    const userCount = usersMeta.length;
+    const intersectionCount = userCount / 4;
+    usersMeta.forEach((userMeta) => {
+        users.push(new User(userMeta, parent, canvas, size, headerHeight))
+    })
+    intersectionPoints = Array.from({ length: intersectionCount}, () => new IntersectionPoint(canvas, ctx, 10));
+    update();
+}
 
-update();
-//setInterval(update, 10);-
+fetch('http://localhost:8080/users')
+    .then(response => response.json())
+    .then(data => generateUsers(data['users']))
+    .catch(error => console.log(error.message));
