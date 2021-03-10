@@ -7,17 +7,19 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-content: flex-end;
   height: 10%;
   background-color: rgba(180, 180, 180, 0.5);
+  padding-left: 1%;
+  padding-top: 1%;
 }
 
 .logo {
-  background-color: darkgrey;
-  width: 30px;
-  height: 30px;
-  margin: 1%;
+  width: 25%;
+  height: auto;
+  margin: 0%;
 }
+
 
 button {
   margin-bottom: 9%;
@@ -28,15 +30,37 @@ button {
   padding: 3px;
   margin: 4px;
   margin-bottom: 18px;
+  
 }
 
 .button2 {
   margin-right: 6px;
 }
 
-.button3 {
+.buttons{
+  display: flex;
+  align-items: flex-end;
+  width:95%;
+  
 }
 
+.button3{
+  margin-right: 65%;
+}
+figcaption{
+  width: 25%;
+  margin: 0%;
+}
+
+figure{
+  margin: 0%;
+}
+.mainN{
+height: 80%;
+background-color: aqua;
+
+
+}
 footer {
   display: flex;
   justify-content: space-between;
