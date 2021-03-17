@@ -75,21 +75,27 @@ footer {
   align-self: flex-end;
 }
 
+#users{
+  overflow-y: hidden;
+}
+
 .user {
   position: absolute;
-  border: 1px solid #ffffff;
-  background-color: #00000077;
+  border: 1px solid #831717;
+  background-color: #b9a2a252;
 }
+
+
 
 .name {
   font-size: 8pt;
-  color: aliceblue;
+  color: rgb(77, 160, 233);
   text-align: center;
 }
 
 .shortDescription {
   font-size: 6pt;
-  color: rgba(240, 248, 255, 0.678);
+  color: rgba(2, 18, 32, 0.678);
 }
 
 body {
@@ -98,4 +104,6 @@ body {
 }
 #canvas {
   border: black 3px solid;
+  background: #4b3664;
 }
+
