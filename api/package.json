@@ -13,7 +13,8 @@
     "dev:db:migrate": "npx sequelize-cli db:migrate",
     "dev:db:seed": "npx sequelize-cli db:seed:all",
     "dev:db:stop": "docker stop relink-dev-db && docker rm relink-dev-db",
-    "dev:db:create": "npm-run-all dev:db:build dev:db:run dev:db:migrate dev:db:seed",
+    "dev:db:create": "npm-run-all dev:db:build dev:db:run",
+    "dev:db:setup": "npm-run-all dev:db:migrate dev:db:seed",
     "dev:db:reset": "npm-run-all dev:db:stop dev:db:create",
     "dev": "nodemon --exec babel-node ./src/server.js"
   },

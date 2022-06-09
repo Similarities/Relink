@@ -27,20 +27,24 @@ Inside a terminal/PS navigate into the `api` folder and ...
     ```
     npm install
     ```
-2) Set up development database, this will build and run a docker
-   conatiner containing the development database. Additionally it
-   runs all migration, so the database schema is up to date and 
-   fills the database tables with seeds (e.g. users).
+2) Set up development database, this will build and run a docker conatiner 
+   containing the development database.
     ```
     npm run dev:db:create 
     ```
 
-3) To start the development `api` you only need to type...
+3) Add fake data to the database. It runs all migration, so the database schema 
+   is up to date and fills the database tables with seeds (e.g. users).
+    ```
+    npm run dev:db:setup 
+    ```
+
+4) To start the development `api` you only need to type...
     ```
     npm run dev
     ```
 
-4) [**optional**] After everything was successful you can try to 
+5) [**optional**] After everything was successful you can try to 
    request all users using the `humao.rest-client` plugin and
    executing a request from inside `api/requests.rest` file.
 
